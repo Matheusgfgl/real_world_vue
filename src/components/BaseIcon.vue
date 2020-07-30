@@ -1,5 +1,5 @@
 <template>
-  <div class="icon-wraper">
+  <div class="icon-wrapper">
     <svg class="icon" :width="width" :height="height">
       <use v-bind="{ 'xlink:href': '/feather-sprite.svg#' + name }" />
     </svg>
@@ -26,7 +26,7 @@ export default {
 
 <style>
 .icon-wrapper {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   color: rgba(0, 0, 0, 0.4);
   font-size: 1rem;
@@ -37,6 +37,6 @@ export default {
   stroke-width: 2;
   stroke-linecap: round;
   fill: none;
-  margin-right: 6px;
+  margin-right: 16px;
 }
 </style>

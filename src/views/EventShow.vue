@@ -1,16 +1,14 @@
 <template>
-  <div>
+  <div class="event">
     <div class="event-header">
       <span class="eyebrow">@ {{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
-      <h5>
-        Organized by : {{ event.organizer ? event.organizer : 'Matheus' }}
-      </h5>
+      <h5>Organized by : {{ event.organizer ? event.organizer.name : '' }}</h5>
       <h5>Category: {{ event.category }}</h5>
     </div>
 
     <BaseIcon name="map">
-      <h2>Location</h2>
+      <h2 class="location">Location</h2>
     </BaseIcon>
 
     <address>{{ event.location }}</address>
@@ -18,7 +16,7 @@
     <h2>Event details</h2>
     <p>{{ event.description }}</p>
 
-    <h2>
+    <h2 class="location">
       Attendees
       <span class="badge -fill-gradient">{{
         event.attendees ? event.attendees.length : 0
@@ -32,33 +30,24 @@
   </div>
 </template>
 <script>
-import EventService from '../services/EventService'
-
+import { mapState } from 'vuex'
 export default {
   props: ['id'],
-  data() {
-    return {
-      event: []
-    }
-  },
+
   created() {
-    EventService.getEvent(this.id)
-      .then(response => {
-        this.event = response.data
-      })
-      .catch(error => {
-        console.log('These is an error', error.response)
-      })
-  }
+    this.$store.dispatch('fetchEvent', this.id)
+  },
+  computed: mapState(['event'])
 }
 </script>
 
 <style scoped>
-.location {
-  margin-bottom: 0;
+.event {
+  margin-top: 50px;
 }
-.location > .icon {
-  margin-left: 10px;
+.location {
+  display: flex;
+  align-items: center;
 }
 .event-header > .title {
   margin: 0;

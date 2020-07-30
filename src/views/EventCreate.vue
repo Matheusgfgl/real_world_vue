@@ -101,7 +101,7 @@ export default {
           this.event = this.createFreshEventObject()
         })
         .catch(() => {
-          console.log('Error')
+          console.log('Error creating an event')
         })
     }
   }
