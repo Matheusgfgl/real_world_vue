@@ -2,16 +2,19 @@
   <div id="app">
     <NavBar />
     <!-- Garante que o componente seja 
-    atualizado a cada troca de routa -->
+    atualizado a cada troca de routa-->
+    <NotificationBar />
     <router-view :key="$route.fullPath" />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/Nav.vue'
+import NotificationBar from './components/NotificationContainer'
 export default {
   components: {
-    NavBar
+    NavBar,
+    NotificationBar
   }
 }
 </script>
@@ -95,7 +98,15 @@ small {
   font-weight: 400;
   line-height: 26px;
 }
-.badge.-fill-gradient {
+.badge .-fill-gradient {
+  background: linear-gradient(to right, #16c0b0, #84cf6a);
+  color: #fff;
+}
+
+.-fill-gradient {
+  font-weight: bold;
+  border-radius: 12%;
+
   background: linear-gradient(to right, #16c0b0, #84cf6a);
   color: #fff;
 }
@@ -105,6 +116,11 @@ input,
 optgroup,
 select,
 textarea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  border: 0;
   display: inline-flex;
   font-family: 'Open sans', sans-serif;
   font-size: 100%;

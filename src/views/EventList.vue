@@ -4,21 +4,14 @@
     <EventCard v-for="event in event.events" :key="event.id" :event="event" />
     <div class="pagination">
       <template v-if="page != 1">
-        <router-link
-          :to="{ name: 'event-list', query: { page: page - 1 } }"
-          rel="prev"
-        >
-          Prev Page
-        </router-link>
+        <router-link :to="{ name: 'event-list', query: { page: page - 1 } }" rel="prev">Prev Page</router-link>
       </template>
 
       <router-link
         v-if="event.eventTotal > page * event.perPage"
         :to="{ name: 'event-list', query: { page: page + 1 } }"
         rel="next"
-      >
-        Next Page
-      </router-link>
+      >Next Page</router-link>
     </div>
   </div>
 </template>
@@ -33,7 +26,6 @@ export default {
   },
 
   created() {
-    console.log(this.event)
     this.$store.dispatch('fetchEvents', {
       perPage: 3,
       page: this.page

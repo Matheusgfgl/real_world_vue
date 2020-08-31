@@ -2,9 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import 'nprogress/nprogress.css'
+import Vuelidade from 'vuelidate'
+import DateFilter from './filters/date'
 
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+
+Vue.use(Vuelidade)
+Vue.filter('date', DateFilter)
 
 const requireComponent = require.context(
   './components',

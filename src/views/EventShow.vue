@@ -1,7 +1,7 @@
 <template>
   <div class="event">
     <div class="event-header">
-      <span class="eyebrow">@ {{ event.time }} on {{ event.date }}</span>
+      <span class="eyebrow">@ {{ event.time }} on {{ event.date | date }}</span>
       <h1 class="title">{{ event.title }}</h1>
       <h5>Organized by : {{ event.organizer ? event.organizer.name : '' }}</h5>
       <h5>Category: {{ event.category }}</h5>
@@ -18,9 +18,9 @@
 
     <h2 class="location">
       Attendees
-      <span class="badge -fill-gradient">{{
-        event.attendees ? event.attendees.length : 0
-      }}</span>
+      <span class="badge -fill-gradient">
+        {{ event.attendees ? event.attendees.length : 0 }}
+      </span>
     </h2>
     <ul class="list-group">
       <li v-for="attendee in event.attendees" :key="attendee" class="list-item">
@@ -30,7 +30,8 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+
 export default {
   props: ['id'],
 
@@ -39,7 +40,8 @@ export default {
   },
   computed: mapState({
     event: state => state.event.event
-  })
+  }),
+  methods: mapActions('event', ['fetchEvent'])
 }
 </script>
 
