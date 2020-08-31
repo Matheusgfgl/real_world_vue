@@ -1,7 +1,6 @@
 # real_word-vue
 
 ![Listt Events](real-world-list.png) 
-
 ## Project setup
 ```
 npm install
