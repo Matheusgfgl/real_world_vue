@@ -1,6 +1,6 @@
 # real_word-vue
 
-![Listt Events](real-world-list.png)   ![Create Events](real-world-create.png)
+![Listt Events](real-world-list.png) 
 
 ## Project setup
 ```
